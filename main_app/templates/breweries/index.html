@@ -1,0 +1,27 @@
+{% extends 'base.html' %} 
+
+{% block content %} 
+
+<h1> Brewery List </h1>
+
+{% for brewery in breweries %} 
+
+<div class="card">
+    <div class="card-content">
+
+        <span class="card-title"> {{ brewery.name }} </span>
+        <p> Address: {{ brewery.address }} </p>
+        <p> Description: {{ brewery.description }} </p>
+        <p> Top Tap: {{ brewery.toptap }} </p>
+        <p> Established: {{ brewery.established }} </p>
+    </div>
+
+    {% if brewer.established > 2020 %}
+        <p> New Breweries: {{ brewery.established }} </p>
+    {% else %}
+        <p> Established: {{ brewery.established }} </p>
+    {% endif %}
+</div>
+
+{% endfor %}
+{% endblock %}
