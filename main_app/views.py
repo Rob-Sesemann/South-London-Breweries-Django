@@ -17,8 +17,11 @@ breweries = [
     Brewery('Br3wery', '253 Beckenham Rd, Beckenham BR3 4RP', 'Delicious beers found between the towns of ever growing Penge and well-established Beckenham', 'Gipsy Hill IPA', 2016),
 ]
 
+# def home(request):
+#     return HttpResponse('<h1> Hello London Drinker </h1>')
+
 def home(request):
-    return HttpResponse('<h1> Hello London Drinker </h1>')
+    return render(request, 'home.html')
 
 def about(request):
     return render(request, 'about.html')
