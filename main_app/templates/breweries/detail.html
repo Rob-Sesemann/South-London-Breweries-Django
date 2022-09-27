@@ -1,11 +1,12 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
 
-<h1>Brewery List</h1>
+{% block content %}
 
-{% for brewery in breweries %}
+<h1>Brewery Details</h1>
+
+
 
 <div class="card">
-<a href="{% url 'detail' brewery.id %}">
   <div class="card-content">
     <div class="flex-container">
       <div>
@@ -27,6 +28,9 @@
       </div>
     </div>
 
-</a>
-  {% endfor %} {% endblock %}
 </div>
+</div>
+
+
+{% endblock %}
+
