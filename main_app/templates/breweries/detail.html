@@ -23,6 +23,11 @@
         {% endif %}
       </div>
 
+      <div class="card-action">
+        <a href="{% url 'breweries_update' brewery.id %}">Edit</a>
+        <a href="{% url 'breweries_delete' brewery.id %}">Delete</a>
+      </div>
+
       <div class="right">
         {% load static %} <img width="150px" height="150px" src={% static brewery.image|cut:'main_app/static/' %} />
       </div>

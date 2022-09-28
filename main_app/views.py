@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Brewery
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # # Create your views here.
 # class Brewery:
@@ -21,6 +21,14 @@ from django.views.generic.edit import CreateView
 class BreweryCreate(CreateView):
     model = Brewery
     fields = ['name', 'address', 'description', 'toptap', 'established']
+
+class BreweryUpdate(UpdateView):
+    model = Brewery
+    fields = ['address', 'description', 'toptap', 'established']
+
+class BreweryDelete(DeleteView):
+    model = Brewery
+    success_url = '/breweries/'
 
 # def home(request):
 #     return HttpResponse('<h1> Hello London Drinker </h1>')
