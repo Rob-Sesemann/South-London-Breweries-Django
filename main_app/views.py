@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Brewery
+from django.views.generic.edit import CreateView
 
 # # Create your views here.
 # class Brewery:
@@ -17,6 +18,9 @@ from .models import Brewery
 #     Brewery('Southey', '21 Southey St, London SE20 7JD', 'Small Brewery tucked away in a corner of Penge surrounded by quality street art', '666', 2016),
 #     Brewery('Br3wery', '253 Beckenham Rd, Beckenham BR3 4RP', 'Delicious beers found between the towns of ever growing Penge and well-established Beckenham', 'Gipsy Hill IPA', 2016),
 # ]
+class BreweryCreate(CreateView):
+    model = Brewery
+    fields = ['name', 'address', 'description', 'toptap', 'established']
 
 # def home(request):
 #     return HttpResponse('<h1> Hello London Drinker </h1>')
