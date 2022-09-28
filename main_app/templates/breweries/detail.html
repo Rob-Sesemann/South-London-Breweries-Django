@@ -4,12 +4,9 @@
 
 <h1>Brewery Details</h1>
 
-
-
 <div class="card">
   <div class="card-content">
     <div class="flex-container">
-      <div>
         <span class="card-title"> {{ brewery.name }} </span>
         <p>Address: {{ brewery.address }}</p>
         <p>Description: {{ brewery.description }}</p>
@@ -28,13 +25,15 @@
         <a href="{% url 'breweries_delete' brewery.id %}">Delete</a>
       </div>
 
-      <div class="right">
-        {% load static %} <img width="150px" height="150px" src={% static brewery.image|cut:'main_app/static/' %} />
+<div>
+  <table class="striped">
+    <thead>
+      <tr></tr>
+    </thead>
+  </table>
+</div>
       </div>
-    </div>
 
-</div>
-</div>
 
 
 {% endblock %}
