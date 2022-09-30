@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Brewery
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .forms import SpecialbrewForm
 
 # # Create your views here.
 # class Brewery:
@@ -45,4 +46,16 @@ def breweries_index(request):
 
 def breweries_detail(request, brewery_id):
     brewery = Brewery.objects.get(id = brewery_id)
-    return render(request, 'breweries/detail.html', {'brewery': brewery})
+
+    specialbrew_form = SpecialbrewForm()
+    return render(request, 'breweries/detail.html', {'brewery': brewery, 'specialbrew_form': specialbrew_form})
+
+def add_specialbrew(request, brewery_id):
+    form = SpecialbrewForm(request.POST)
+
+    if form.is_valid():
+        new_specialbrew = form.save(commit=False)
+        new_specialbrew.brewery_id = brewery_id
+        new_specialbrew.save()
+    return redirect('detail', brewery_id = brewery_id)
+

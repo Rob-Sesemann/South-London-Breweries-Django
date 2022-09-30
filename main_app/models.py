@@ -32,4 +32,4 @@ class Specialbrew(models.Model):
     brewery = models.ForeignKey(Brewery, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.get_meal_display()} on {self.date}"
+        return f"{self.get_variety_display()} on {self.date}"
