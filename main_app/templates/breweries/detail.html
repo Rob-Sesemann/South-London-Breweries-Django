@@ -32,6 +32,11 @@
     <input type="submit" value="Add Special Brew" class="btn">
   </form>
 
+  {% if brewery.specialbrew_ready %}
+    <div class="card-panel teal-text center-align"> {{ brewery.name }} has some special brews ready.</div>
+  {% else %}
+    <div class="card-panel red-text center-align"> {{ brewery.name }} is currently brewering some special brews. Watch this space!</div>
+  {% endif %}
   <table class="striped">
     <thead>
       <tr> Name </tr>
@@ -71,4 +76,3 @@
 
 
 {% endblock %}
-

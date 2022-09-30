@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Brewery
+from .models import Brewery, Corebrew
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 from .forms import SpecialbrewForm
 
 # # Create your views here.
@@ -59,3 +60,20 @@ def add_specialbrew(request, brewery_id):
         new_specialbrew.save()
     return redirect('detail', brewery_id = brewery_id)
 
+class CorebrewList(ListView):
+    model = Corebrew
+
+class CorebrewDetail(DetailView):
+    model = Corebrew
+
+class CorebrewCreate(CreateView):
+    model = Corebrew
+    fields = '__all__'
+
+class CorebrewUpdate(UpdateView):
+    model = Corebrew
+    fields = ['name', 'description', 'brewery']
+
+class CorebrewDelete(DeleteView):
+    model = Corebrew
+    success_url = '/corebrews/'

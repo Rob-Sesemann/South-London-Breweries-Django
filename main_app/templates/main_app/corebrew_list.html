@@ -1,0 +1,21 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+
+<h1> Core Brew List </h1>
+
+{% for corebrew in corebrew_list %} 
+<a href="{% url 'corebrews_detail' corebrew.id %}">
+
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{ corebrew.name }}</span><br>
+            <p>Description: {{ corebrew.description }}</p><br>
+            <p>Variety: {{ corebrew.variety }}</p><br>
+            <p>Brewery: {{ corebrew.brewery }}</p>
+        </div>
+    </div>
+</a>
+{% endfor %}
+
+{% endblock %}
