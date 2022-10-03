@@ -13,11 +13,17 @@ urlpatterns = [
 
     path('breweries/<int:brewery_id>/add_specialbrew/', views.add_specialbrew, name='add_specialbrew'),
 
-    # Paths for CRUD operations in Torebrews
+    # Paths for CRUD operations in Corebrews
     path('corebrews/', views.CorebrewList.as_view(), name='corebrews_index'),
     path('corebrews/<int:pk>/', views.CorebrewDetail.as_view(), name='corebrews_detail'),
 
     path('corebrews/create/', views.CorebrewCreate.as_view(), name='corebrews_create'),
     path('corebrews/<int:pk>/update/', views.CorebrewUpdate.as_view(), name='corebrews_update'),
-    path('corebrews/<int:pk>/delete/', views.CorebrewDelete.as_view(), name='corebrews_delete')
+    path('corebrews/<int:pk>/delete/', views.CorebrewDelete.as_view(), name='corebrews_delete'),
+
+        # Associate a corebrew with a brewery (M:M)
+    path('breweries/<int:brewery_id>/assoc_corebrew/<int:corebrew_id>', views.assoc_corebrew, name='assoc_corebrew'),
+
+    # Unassociate a corebrew from a brewery (M:M)
+    path('breweries/<int:brewery_id>/unassoc_corebrew/<int:corebrew_id>', views.unassoc_corebrew, name='unassoc_corebrew')
 ]

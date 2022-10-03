@@ -48,6 +48,8 @@ def breweries_index(request):
 def breweries_detail(request, brewery_id):
     brewery = Brewery.objects.get(id = brewery_id)
 
+    corebrews_brewery_doesnt_have = Corebrew.objects.exclude(id_in = brewery.corebrews.all().values_list('id'))
+
     specialbrew_form = SpecialbrewForm()
     return render(request, 'breweries/detail.html', {'brewery': brewery, 'specialbrew_form': specialbrew_form})
 
@@ -72,8 +74,19 @@ class CorebrewCreate(CreateView):
 
 class CorebrewUpdate(UpdateView):
     model = Corebrew
-    fields = ['name', 'description', 'brewery']
+    fields = ['name', 'description', 'corebrewery']
 
 class CorebrewDelete(DeleteView):
     model = Corebrew
     success_url = '/corebrews/'
+
+def assoc_corebrew(request, brewery_id, corebrew_id):
+
+    Brewery.objects.get(id = brewery_id).corebrews.add(corebrew_id)
+    return redirect('detail', brewery_id = brewery_id)
+
+def unassoc_corebrew(request, brewery_id, corebrew_id):
+
+    Brewery.objects.get(id = brewery_id).corebrews.add(corebrew_id)
+    return redirect('detail', brewery_id = brewery_id)
+    
